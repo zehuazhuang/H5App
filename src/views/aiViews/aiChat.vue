@@ -221,7 +221,7 @@ async function sendMessage() {
 }
 
 .center-section {
-  margin-top: calc(100vh * 30 / 812); /* 顺便往上调 */
+  margin-top: calc(100vh * 50 / 812); /* 顺便往上调 */
   margin-left: calc(100vw * 20 / 375); /* 左边贴一点 */
   margin-right: calc(100vw * 100 / 375); /* 控制最大宽度 */
   display: flex;
