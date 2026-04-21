@@ -60,9 +60,9 @@ import { aiChat } from '@/utils/ai'
 import { decryptAES } from '@/utils/aes'
 
 const messages = ref([
-  "I'm feeling great today.",
-  "Do you like reading?",
-  "Can you comfort me?"
+  "How to start working out?",
+  "How often to exercise?",
+  "How long per workout?"
 ])
 
 const currentUserStore = useCurrentUserStore()
@@ -82,7 +82,7 @@ const getFirstTime = () => {
 }
 
 const bottomItems = ref([
-  { sendId: '0', time: getFirstTime(), message: 'Hi there! I’m Kico, your AI buddy for all things fun and creative.' },
+  { sendId: '0', time: getFirstTime(), message: 'Hi there! I’m Vaim, your AI buddy for all things fun and creative.' },
 ])
 
 async function handleMessageClick(message) {

@@ -10,39 +10,39 @@
     <!-- 内容 -->
     <div class="agreement-content">
 
-      <h1>Luvie User Agreement</h1>
+      <h1>Sehi User Agreement</h1>
 
       <p class="update-time">Last updated: 2026</p>
 
       <p>
-        Welcome to <strong>Luvie</strong>. Please read this User Agreement carefully before using the
-        Luvie application and services. By accessing or using the service, you agree to be bound
+        Welcome to <strong>Sehi</strong>. Please read this User Agreement carefully before using the
+        Sehi application and services. By accessing or using the service, you agree to be bound
         by this agreement.
       </p>
 
       <h2>1. Acceptance of Terms</h2>
 
       <p>
-        By creating an account or using Luvie, you confirm that you have read,
+        By creating an account or using Sehi, you confirm that you have read,
         understood, and agreed to comply with this User Agreement and all applicable laws.
       </p>
 
       <h2>2. Description of Services</h2>
 
       <p>
-        Luvie provides online social interaction services including but not limited to
+        Sehi provides online social interaction services including but not limited to
         messaging, video interaction, profile creation, and virtual item purchases.
       </p>
 
       <p>
-        Luvie reserves the right to modify, suspend, or discontinue any part of the
+        Sehi reserves the right to modify, suspend, or discontinue any part of the
         services at any time without prior notice.
       </p>
 
       <h2>3. User Accounts</h2>
 
       <p>
-        You may be required to create an account to access certain features of Luvie.
+        You may be required to create an account to access certain features of Sehi.
         You agree to provide accurate and complete information and keep your
         account credentials secure.
       </p>
@@ -65,7 +65,7 @@
       <h2>5. Virtual Items and Purchases</h2>
 
       <p>
-        Luvie may offer virtual items such as diamonds or coins which can be used
+        Sehi may offer virtual items such as diamonds or coins which can be used
         within the platform. These items have no real-world monetary value and
         cannot be redeemed for cash.
       </p>
@@ -84,21 +84,21 @@
       <h2>7. Termination</h2>
 
       <p>
-        Luvie reserves the right to suspend or terminate your account if you violate
+        Sehi reserves the right to suspend or terminate your account if you violate
         this agreement or engage in harmful activities.
       </p>
 
       <h2>8. Disclaimer</h2>
 
       <p>
-        The Luvie service is provided on an "as is" and "as available" basis without
+        The Sehi service is provided on an "as is" and "as available" basis without
         warranties of any kind.
       </p>
 
       <h2>9. Changes to This Agreement</h2>
 
       <p>
-        Luvie may update this agreement from time to time. Continued use of the
+        Sehi may update this agreement from time to time. Continued use of the
         service after changes indicates acceptance of the updated terms.
       </p>
 

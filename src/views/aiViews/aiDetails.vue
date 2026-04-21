@@ -1,7 +1,7 @@
 <template>
   <div class="page">
     <div class="aiusermodel"></div>
-    <div class="aichatmodel"></div>
+    <!-- <div class="aichatmodel"></div> -->
 
     <!-- 页面内容 -->
     <div class="page-content">
@@ -10,8 +10,8 @@
       </div>
       <div class="bottom-section">
         <div class="bottom-container">
-          <div class="bottom-title">Luvie AI</div>
-          <div class="bottom-text">Hi! I’m Kico, your friendly AI companion here to chat about all your passions and interests. Whether you love fashion, art, music, or anything in between, I’m here to explore ideas, share tips, and keep the conversation fun and inspiring. Ready to dive into your favorite hobbies together? Let’s talk and discover something new every day!</div>
+          <div class="bottom-title">Sehi AI</div>
+          <div class="bottom-text">Hello! I'm Sehi AI, your intelligent piano companion.Whether you're just starting to explore the keys or you're a seasoned pianist looking to refine your technique, I'm here to help you every step of the way. I can listen to your playing, offer real‑time feedback, suggest personalized practice routines, and even guide you through your favorite pieces—note by note.Think of me as your private coach, always patient, always ready to help you improve. With Sehi AI, every practice session becomes a step closer to the music you love.Let’s make beautiful music together! 🎹</div>
         <!-- 购买 -->
         <div class="purchase-container" @click="handlePurchaseClick">
           <div class="purchase-info">
