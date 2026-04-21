@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <div class="aiusermodel"></div>
+    <!-- <div class="aiusermodel"></div> -->
     <!-- <div class="aichatmodel"></div> -->
 
     <!-- 页面内容 -->

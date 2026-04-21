@@ -1,7 +1,7 @@
 <template>
   <div class="page">
-    <div class="aiusermodel"></div>
-    <div class="aichatmodel"></div>
+    <!-- <div class="aiusermodel"></div> -->
+    <!-- <div class="aichatmodel"></div> -->
     <div class="page-container">
       <!-- top -->
       <div class="top-section">
