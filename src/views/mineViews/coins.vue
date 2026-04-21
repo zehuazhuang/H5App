@@ -157,19 +157,7 @@ function handleCoinClick(item) {
   color: rgba(255, 255, 255, 1);
 }
 
-.coinbgc {
-  position: absolute;
-  top: calc(100vh * 16 / 812);
-  right: calc(100vh * 27 / 812);
-  width: calc(100vw * 167 / 375);
-  height: calc(100vh * 297 / 812);
-  background-image: url('@/assets/coinsbgc.png');
-  background-size: cover; /* 等比缩放覆盖 */
-  background-position: center; /* 居中显示 */
-  background-repeat: no-repeat;
-  overflow: hidden;
-  pointer-events: none; /* 点击穿透，不拦截点击事件 */
-}
+
  
 .coins {
   height: calc(100% - calc(100vh * 285 / 812));
