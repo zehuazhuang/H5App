@@ -189,7 +189,7 @@ function cancelFollow(userId) {
   font-size: calc(100vw * 14 / 375);
   font-weight: 400;
   line-height: calc(100vw * 15.23 / 375);
-  color: #fff;
+  color: #000;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
