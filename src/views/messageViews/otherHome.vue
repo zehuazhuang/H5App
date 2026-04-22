@@ -193,6 +193,8 @@ function handleFollow() {
 }
 
 function handleChat() {
+  if (requireLoginForAction(currentUserStore, uiStore)) return
+
   if (uiStore.loading) return
   uiStore.showLoading()
   const currentUserId = currentUserStore.currentUser.userId
