@@ -72,6 +72,11 @@ const router = createRouter({
       component: () => import('../views/mineViews/edit.vue'),
     },
     {
+      path: '/newsignup',
+      name: 'newsignup',
+      component: () => import('../views/mineViews/newsignup.vue'),
+    },
+    {
       path: '/follow',
       name: 'follow',
       component: () => import('../views/mineViews/follow.vue'),
