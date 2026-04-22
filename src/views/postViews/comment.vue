@@ -77,9 +77,7 @@ function goOtherHome(userId) {
 const inputText = ref('')
 
 function sendComment() {
-  if (requireLoginForAction(currentUserStore, uiStore, {
-    message: 'Guests need to log in before commenting.'
-  })) return
+  if (requireLoginForAction(currentUserStore, uiStore)) return
 
   const content = inputText.value.trim()
   if (!content) return // 输入为空直接返回
@@ -110,9 +108,7 @@ const emit = defineEmits(['openCommentReport'])
 
 // 打开帖子举报
 function openComment(userId) {
-  if (requireLoginForAction(currentUserStore, uiStore, {
-    message: 'Guests need to log in before using report options.'
-  })) return
+  if (requireLoginForAction(currentUserStore, uiStore)) return
 
   reportCommentUserId.value = userId
   emit('openCommentReport')

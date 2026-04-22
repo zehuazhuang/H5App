@@ -49,9 +49,7 @@ const fans = computed(() => {
 })
 
 function addFollow(userId) {
-  if (requireLoginForAction(currentUserStore, uiStore, {
-    message: 'Guests need to log in before following users.'
-  })) return
+  if (requireLoginForAction(currentUserStore, uiStore)) return
 
   if (currentUserStore.currentUser.follow?.includes(userId)) {
     uiStore.showToast('You have already followed this user.')

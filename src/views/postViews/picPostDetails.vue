@@ -151,9 +151,7 @@ const router = useRouter()
 //帖子举报、拉黑
 const showPostReport = ref(false)
 function openPostReport() {
-  if (requireLoginForAction(currentUserStore, uiStore, {
-    message: 'Guests need to log in before using report options.'
-  })) return
+  if (requireLoginForAction(currentUserStore, uiStore)) return
 
   showPostReport.value = true
 }
@@ -202,9 +200,7 @@ function goOtherHome(userId) {
 
 // 点赞逻辑
 function toggleLike() {
-  if (requireLoginForAction(currentUserStore, uiStore, {
-    message: 'Guests need to log in before liking posts.'
-  })) return
+  if (requireLoginForAction(currentUserStore, uiStore)) return
 
   const postLikeIds = currentUserStore.currentUser.postLikeIds
   // 判断当前用户是否已经点赞
@@ -228,9 +224,7 @@ const reportCommentUserId = ref(null)
 const showCommentReport = ref(false)
 
 function handleCommentReport(userId) {
-  if (requireLoginForAction(currentUserStore, uiStore, {
-    message: 'Guests need to log in before using report options.'
-  })) return
+  if (requireLoginForAction(currentUserStore, uiStore)) return
 
   reportCommentUserId.value = userId
   showCommentReport.value = true
@@ -269,9 +263,7 @@ function commentReportSelect(value) {
 
 // 发送评论逻辑
 function sendComment() {
-  if (requireLoginForAction(currentUserStore, uiStore, {
-    message: 'Guests need to log in before commenting.'
-  })) return
+  if (requireLoginForAction(currentUserStore, uiStore)) return
 
   const content = commentInput.value.trim()
   if (!content) return // 输入为空直接返回

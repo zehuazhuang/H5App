@@ -149,9 +149,7 @@ onBeforeUnmount(() => {
 //帖子举报、拉黑
 const showPostReport = ref(false)
 function openPostReport() {
-  if (requireLoginForAction(currentUserStore, uiStore, {
-    message: 'Guests need to log in before using report options.'
-  })) return
+  if (requireLoginForAction(currentUserStore, uiStore)) return
 
   showPostReport.value = true
 }
@@ -194,9 +192,7 @@ function postReportSelect(value) {
 
 // Handle follow action
 function handleFollow() {
-  if (requireLoginForAction(currentUserStore, uiStore, {
-    message: 'Guests need to log in before following users.'
-  })) return
+  if (requireLoginForAction(currentUserStore, uiStore)) return
 
   const currentUserId = currentUserStore.currentUser.userId
   const postUserId = post.userId
@@ -229,9 +225,7 @@ function goOtherHome(userId) {
 
 // 点赞逻辑
 function toggleLike() {
-  if (requireLoginForAction(currentUserStore, uiStore, {
-    message: 'Guests need to log in before liking posts.'
-  })) return
+  if (requireLoginForAction(currentUserStore, uiStore)) return
 
   const postLikeIds = currentUserStore.currentUser.postLikeIds
   // 判断当前用户是否已经点赞

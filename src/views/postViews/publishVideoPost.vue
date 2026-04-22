@@ -83,9 +83,7 @@ const handleRemoveVideo = () => {
 }
 
 const handleRelease = async () => {
-  if (requireLoginForAction(currentUserStore, uiStore, {
-    message: 'Guests need to log in before publishing posts.'
-  })) return
+  if (requireLoginForAction(currentUserStore, uiStore)) return
 
   // 1. 判断文案是否为空
   if (!text.value.trim()) {

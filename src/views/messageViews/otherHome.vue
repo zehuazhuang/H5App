@@ -129,9 +129,7 @@ const router = useRouter()
 
 const showReport = ref(false)
 function openReportDialog() {
-  if (requireLoginForAction(currentUserStore, uiStore, {
-    message: 'Guests need to log in before using report options.'
-  })) return
+  if (requireLoginForAction(currentUserStore, uiStore)) return
 
   showReport.value = true
 }
@@ -170,9 +168,7 @@ function reportSelect(value) {
 
 // Handle follow action
 function handleFollow() {
-  if (requireLoginForAction(currentUserStore, uiStore, {
-    message: 'Guests need to log in before following users.'
-  })) return
+  if (requireLoginForAction(currentUserStore, uiStore)) return
 
   const currentUserId = currentUserStore.currentUser.userId
 

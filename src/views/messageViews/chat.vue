@@ -199,9 +199,7 @@ function closeVideoCall() {
 
 const showReport = ref(false)
 function openReportDialog() {
-  if (requireLoginForAction(currentUserStore, uiStore, {
-    message: 'Guests need to log in before using report options.'
-  })) return
+  if (requireLoginForAction(currentUserStore, uiStore)) return
 
   showReport.value = true
 }

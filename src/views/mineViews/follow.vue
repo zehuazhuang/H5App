@@ -49,9 +49,7 @@ const follows = computed(() => {
 })
 
 function cancelFollow(userId) {
-  if (requireLoginForAction(currentUserStore, uiStore, {
-    message: 'Guests need to log in before managing follows.'
-  })) return
+  if (requireLoginForAction(currentUserStore, uiStore)) return
 
   if (uiStore.loading) return
   uiStore.showLoading()

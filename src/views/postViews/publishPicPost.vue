@@ -90,9 +90,7 @@ const uiStore = useUIStore()
 const postStore = usePostStore()
 const currentUserStore = useCurrentUserStore()
 const handleRelease = async () => {
-  if (requireLoginForAction(currentUserStore, uiStore, {
-    message: 'Guests need to log in before publishing posts.'
-  })) return
+  if (requireLoginForAction(currentUserStore, uiStore)) return
 
   if (!text.value.trim()) {
     uiStore.showToast('Please fill in the post text.')
