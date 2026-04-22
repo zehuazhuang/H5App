@@ -87,15 +87,7 @@ const uiStore = useUIStore()
   z-index: 10001;
 }
 
-.login-dialog-shell {
-  width: 100%;
-  max-width: calc(100vw * 340 / 375);
-  padding: calc(100vw * 12 / 375);
-  border-radius: calc(100vw * 48 / 375);
-  background: linear-gradient(90deg, #aa57f6 0%, #af54f6 40%, #bb53ef 100%);
-  transform: rotate(4deg);
-  box-sizing: border-box;
-}
+
 
 .login-dialog {
   min-height: calc(100vw * 352 / 375);
@@ -103,6 +95,7 @@ const uiStore = useUIStore()
   background: #fff;
   box-sizing: border-box;
   overflow: hidden;
+  border: calc(100vw * 8 / 375) solid rgba(177, 222, 255, 0.95);
   transform: rotate(-4deg);
   padding: calc(100vh * 72 / 812) calc(100vw * 26 / 375) calc(100vh * 52 / 812);
   display: flex;
