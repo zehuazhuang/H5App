@@ -194,12 +194,12 @@ function handleAction(isDelete) {
 }
 
 .delete-btn {
-  background: linear-gradient(135deg, rgba(255, 159, 142, 1) 0%, rgba(241, 213, 160, 1) 32.13%, rgba(201, 255, 221, 1) 67.84%, rgba(157, 255, 255, 1) 100%);
-  color: rgba(74, 32, 25, 1);
+  background: #ff3b30; 
+  color: #fff;
 }
 
 .logout-btn {
-  background: rgba(74, 32, 25, 1);
-  color: rgba(255, 255, 255, 1);
+  background: #ff3b30; 
+  color: #fff;
 }
 </style>
