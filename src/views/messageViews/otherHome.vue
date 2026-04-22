@@ -195,9 +195,18 @@ function handleFollow() {
 function handleChat() {
   if (requireLoginForAction(currentUserStore, uiStore)) return
 
+  const currentUserId = currentUserStore.currentUser.userId
+  const currentUserFollow = currentUserStore.currentUser.follow || []
+  const targetUser = userStore.getUserById(userId)
+  const targetUserFollow = targetUser?.follow || []
+
+  if (!currentUserFollow.includes(userId) || !targetUserFollow.includes(currentUserId)) {
+    uiStore.showToast('You can only chat if you follow each other.')
+    return
+  }
+
   if (uiStore.loading) return
   uiStore.showLoading()
-  const currentUserId = currentUserStore.currentUser.userId
 
   // 查找是否已有 chat
   const existChat = chatStore.chat.find(chat => {
