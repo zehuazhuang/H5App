@@ -199,7 +199,7 @@ function cancelFollow(userId) {
   width: calc(100vw * 63 / 375);
   height: calc(100vh * 28 / 812);
   border-radius: calc(100vw * 20 / 375);
-  background: #fff;
+  background: #96DEFF;
   font-family: 'Archivo', sans-serif;
   font-size: calc(100vw * 12 / 375);
   font-weight: 400;

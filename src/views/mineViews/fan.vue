@@ -181,7 +181,7 @@ function addFollow(userId) {
   font-size: calc(100vw * 16 / 375);
   font-weight: 400;
   line-height: calc(100vw * 18.48 / 375);
-  color: #fff;
+  color: #000;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -202,7 +202,7 @@ function addFollow(userId) {
   width: calc(100vw * 63 / 375);
   height: calc(100vh * 28 / 812);
   border-radius: calc(100vw * 20 / 375);
-  background: #fff;
+  background: #96DEFF;
   font-family: 'Archivo', sans-serif;
   font-size: calc(100vw * 12 / 375);
   font-weight: 400;
