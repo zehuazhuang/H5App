@@ -135,15 +135,7 @@ import BackButton from '@/components/back.vue'
 .title{
   font-family: 'YesevaOne', sans-serif;
   font-size: calc(100vw * 20 / 375);
-  background:linear-gradient(
-    135deg,
-    rgba(255,159,142,1),
-    rgba(241,213,160,1),
-    rgba(201,255,221,1),
-    rgba(157,255,255,1)
-  );
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+  color:#000
 }
 
 /* 内容 */
