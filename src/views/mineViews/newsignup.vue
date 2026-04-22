@@ -31,7 +31,8 @@
       <div class="form-section">
         <div class="label">Birthday</div>
         <label class="input-box select-box">
-          <input v-model="birthday" type="date" class="date-input" />
+          <span class="date-display">{{ formatBirthday(birthday) }}</span>
+          <input v-model="birthdayRaw" type="date" class="date-input" @change="handleBirthdayChange" />
           <span class="select-arrow"></span>
         </label>
       </div>
@@ -75,6 +76,7 @@ import { useUserStore } from '@/stores/user'
 import BackButton from '@/components/back.vue'
 import { goBackOrClose } from '@/utils/iosBridge'
 import { uploadSingleImage } from '@/utils/ossUpload'
+import avatarPlaceholder from '@/assets/avataricon.png'
 import signupGenderFemale from '@/assets/signup-gender-female.png'
 import signupGenderMale from '@/assets/signup-gender-male.png'
 
@@ -84,13 +86,51 @@ const uiStore = useUIStore()
 
 const fileInput = ref(null)
 const avatarFile = ref(null)
-const avatarPreview = ref('/src/assets/avataricon.png')
+const avatarPreview = ref(avatarPlaceholder)
 const name = ref('')
-const birthday = ref('2003-01-01')
-const location = ref('LA')
+const birthday = ref('2003-1-1')
+const birthdayRaw = ref('2003-01-01')
+const location = ref('United States')
 const gender = ref('female')
 
-const locations = ['LA', 'New York', 'London', 'Tokyo', 'Shanghai', 'Paris']
+const locations = [
+  'United States',
+  'Canada',
+  'United Kingdom',
+  'Australia',
+  'New Zealand',
+  'France',
+  'Germany',
+  'Italy',
+  'Spain',
+  'Netherlands',
+  'Sweden',
+  'Norway',
+  'Denmark',
+  'Finland',
+  'Switzerland',
+  'Ireland',
+  'Portugal',
+  'Belgium',
+  'Austria',
+  'Japan',
+  'South Korea',
+  'Singapore',
+  'Malaysia',
+  'Thailand',
+  'Philippines',
+  'Indonesia',
+  'Vietnam',
+  'India',
+  'United Arab Emirates',
+  'Saudi Arabia',
+  'Brazil',
+  'Mexico',
+  'Argentina',
+  'Chile',
+  'South Africa',
+  'Turkey'
+]
 
 const genderOptions = [
   {
@@ -118,6 +158,38 @@ function onFileChange(event) {
     avatarPreview.value = ev.target.result
   }
   reader.readAsDataURL(file)
+}
+
+function formatBirthday(value) {
+  if (!value) return ''
+
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime())) {
+    return value
+  }
+
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  return `${year}-${month}-${day}`
+}
+
+function normalizeBirthdayRaw(value) {
+  if (!value) return ''
+
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime())) {
+    return value
+  }
+
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
+
+function handleBirthdayChange() {
+  birthday.value = formatBirthday(birthdayRaw.value)
 }
 
 async function handleNext() {
@@ -174,10 +246,11 @@ onMounted(() => {
   if (!user) return
 
   name.value = user.name || ''
-  birthday.value = user.birthday || '2003-01-01'
-  location.value = user.location || 'LA'
+  birthday.value = user.birthday || '2003-1-1'
+  birthdayRaw.value = normalizeBirthdayRaw(user.birthday || '2003-1-1')
+  location.value = user.location || 'United States'
   gender.value = user.gender || 'female'
-  avatarPreview.value = user.avator || avatarPreview.value
+  avatarPreview.value = user.avator || avatarPlaceholder
 })
 </script>
 
@@ -289,6 +362,29 @@ onMounted(() => {
   font-size: calc(100vw * 14 / 375);
   color: rgba(0, 0, 0, 0.72);
   appearance: none;
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.date-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.date-display {
+  width: 100%;
+  font-family: 'Archivo', sans-serif;
+  font-size: calc(100vw * 14 / 375);
+  color: rgba(0, 0, 0, 0.72);
 }
 
 .input-box input::placeholder {
