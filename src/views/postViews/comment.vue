@@ -110,6 +110,10 @@ const emit = defineEmits(['openCommentReport'])
 
 // 打开帖子举报
 function openComment(userId) {
+  if (requireLoginForAction(currentUserStore, uiStore, {
+    message: 'Guests need to log in before using report options.'
+  })) return
+
   reportCommentUserId.value = userId
   emit('openCommentReport')
 }
@@ -123,10 +127,6 @@ watch(
     if (newVal === null) return
 
     if (newVal === 0) {
-      if (requireLoginForAction(currentUserStore, uiStore, {
-        message: 'Guests need to log in before reporting.'
-      })) return
-
       router.push({ name: 'report' })
     } else if (newVal === 1) {
       if (uiStore.loading) return

@@ -20,7 +20,7 @@
             <input ref="imageInput" type="file" accept="image/*" style="display:none" @change="handleImageChange" />
             <img src="@/assets/chatvideoicon.png" class="icon" @click="openVideoCall" />
           </div>
-          <MoreButton @click="showReport = true" />
+          <MoreButton @click="openReportDialog" />
         </div>
       </div>
 
@@ -198,13 +198,17 @@ function closeVideoCall() {
 }
 
 const showReport = ref(false)
+function openReportDialog() {
+  if (requireLoginForAction(currentUserStore, uiStore, {
+    message: 'Guests need to log in before using report options.'
+  })) return
+
+  showReport.value = true
+}
+
 function reportSelect(value) {
   showReport.value = false
   if (value === 0) {
-    if (requireLoginForAction(currentUserStore, uiStore, {
-      message: 'Guests need to log in before reporting.'
-    })) return
-
     router.push({ name: 'report' })
   } else if (value === 1) {
     //用户选择屏蔽

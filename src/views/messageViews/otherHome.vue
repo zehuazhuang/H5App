@@ -55,7 +55,7 @@
                   </div>
                   <div class="post-username" :title="currentUser.name">{{ currentUser.name }}</div>
                   </div>
-                  <div class="post-report" v-if="userId !== currentUserStore.currentUser.userId" @click="showReport = true"></div>
+                  <div class="post-report" v-if="userId !== currentUserStore.currentUser.userId" @click.stop="openReportDialog"></div>
               </div>
               <!-- Middle image -->
               <div class="post-image" :style="{ backgroundImage: `url(${post.dynamicPic[0]})` }">
@@ -83,7 +83,7 @@
     <!-- 顶部按钮 -->
     <div class="top-btn">
         <BackButton/>
-        <MoreButton v-if="userId !== currentUserStore.currentUser.userId" @click="showReport = true" />
+        <MoreButton v-if="userId !== currentUserStore.currentUser.userId" @click="openReportDialog" />
     </div>
     <ReportDialog v-if="showReport" @close="showReport = false" @select="reportSelect" >
     </ReportDialog>
@@ -128,13 +128,17 @@ const chatStore = useChatsStore()
 const router = useRouter()
 
 const showReport = ref(false)
+function openReportDialog() {
+  if (requireLoginForAction(currentUserStore, uiStore, {
+    message: 'Guests need to log in before using report options.'
+  })) return
+
+  showReport.value = true
+}
+
 function reportSelect(value) {
   showReport.value = false
   if (value === 0) {
-    if (requireLoginForAction(currentUserStore, uiStore, {
-      message: 'Guests need to log in before reporting.'
-    })) return
-
     router.push({ name: 'report' })
   } else if (value === 1) {
     //用户选择屏蔽

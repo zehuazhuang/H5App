@@ -30,7 +30,7 @@
       <!-- 顶部按钮 -->
       <div class="top-actions">
         <BackButton />
-        <MoreButton v-if="post.userId !== currentUserStore.currentUser.userId" @click="showPostReport = true" />
+        <MoreButton v-if="post.userId !== currentUserStore.currentUser.userId" @click="openPostReport" />
       </div>
 
       <!-- 底部信息 -->
@@ -148,13 +148,17 @@ onBeforeUnmount(() => {
 
 //帖子举报、拉黑
 const showPostReport = ref(false)
+function openPostReport() {
+  if (requireLoginForAction(currentUserStore, uiStore, {
+    message: 'Guests need to log in before using report options.'
+  })) return
+
+  showPostReport.value = true
+}
+
 function postReportSelect(value) {
   showPostReport.value = false
   if (value === 0) {
-    if (requireLoginForAction(currentUserStore, uiStore, {
-      message: 'Guests need to log in before reporting.'
-    })) return
-
     router.push({ name: 'report' })
   } else if (value === 1) {
     //用户选择屏蔽
@@ -251,10 +255,6 @@ const showCommentReport = ref(false)
 const commentAction = ref(null) // 保存 0 或 1
 
 function commentReportSelect(value) {
-  if (value === 0 && requireLoginForAction(currentUserStore, uiStore, {
-    message: 'Guests need to log in before reporting.'
-  })) return
-
   commentAction.value = value  // 保存选择
   showCommentReport.value = false
 }

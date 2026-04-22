@@ -20,7 +20,7 @@
         <!-- 顶部按钮 -->
         <div class="top-btn">
           <BackButton/>
-          <MoreButton v-if="post.userId !== currentUserStore.currentUser.userId" @click="showPostReport = true" />
+          <MoreButton v-if="post.userId !== currentUserStore.currentUser.userId" @click="openPostReport" />
         </div>
       </div>
       <!-- 帖子内容 -->
@@ -150,13 +150,17 @@ const router = useRouter()
 
 //帖子举报、拉黑
 const showPostReport = ref(false)
+function openPostReport() {
+  if (requireLoginForAction(currentUserStore, uiStore, {
+    message: 'Guests need to log in before using report options.'
+  })) return
+
+  showPostReport.value = true
+}
+
 function postReportSelect(value) {
   showPostReport.value = false
   if (value === 0) {
-    if (requireLoginForAction(currentUserStore, uiStore, {
-      message: 'Guests need to log in before reporting.'
-    })) return
-
     router.push({ name: 'report' })
   } else if (value === 1) {
     //用户选择屏蔽
@@ -224,6 +228,10 @@ const reportCommentUserId = ref(null)
 const showCommentReport = ref(false)
 
 function handleCommentReport(userId) {
+  if (requireLoginForAction(currentUserStore, uiStore, {
+    message: 'Guests need to log in before using report options.'
+  })) return
+
   reportCommentUserId.value = userId
   showCommentReport.value = true
 }
@@ -235,10 +243,6 @@ function commentReportSelect(value) {
   if (!userIdToBlock) return
 
   if (value === 0) {
-    if (requireLoginForAction(currentUserStore, uiStore, {
-      message: 'Guests need to log in before reporting.'
-    })) return
-
     router.push({ name: 'report' })
   } else if (value === 1) {
     // 拉黑逻辑
