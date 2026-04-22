@@ -75,6 +75,8 @@ import { useUserStore } from '@/stores/user'
 import BackButton from '@/components/back.vue'
 import { goBackOrClose } from '@/utils/iosBridge'
 import { uploadSingleImage } from '@/utils/ossUpload'
+import signupGenderFemale from '@/assets/signup-gender-female.png'
+import signupGenderMale from '@/assets/signup-gender-male.png'
 
 const userStore = useUserStore()
 const currentUserStore = useCurrentUserStore()
@@ -93,11 +95,11 @@ const locations = ['LA', 'New York', 'London', 'Tokyo', 'Shanghai', 'Paris']
 const genderOptions = [
   {
     value: 'female',
-    avatar: 'https://img.js.design/assets/img/67da66b8429d6bf48999ed57.png#2a0b2e9e240a30ff0ea1bfb2ba0df267'
+    avatar: signupGenderFemale
   },
   {
     value: 'male',
-    avatar: 'https://img.js.design/assets/img/695e117d74be3c590c73983c.png#ef786589773a7dc4e16d55c6d9021003'
+    avatar: signupGenderMale
   }
 ]
 
@@ -204,7 +206,7 @@ onMounted(() => {
 
 .page-title {
   font-family: 'YesevaOne', sans-serif;
-  font-size: calc(100vw * 30 / 375);
+  font-size: calc(100vw * 20 / 375);
   font-style: italic;
   color: #000;
 }
@@ -212,35 +214,35 @@ onMounted(() => {
 .content {
   flex: 1;
   overflow-y: auto;
-  padding: calc(100vh * 30 / 812) calc(100vw * 20 / 375) calc(100vh * 32 / 812);
+  padding: calc(100vh * 20 / 812) calc(100vw * 20 / 375) calc(100vh * 28 / 812);
   box-sizing: border-box;
 }
 
 .avatar-section {
   display: flex;
   justify-content: center;
-  margin-bottom: calc(100vh * 38 / 812);
+  margin-bottom: calc(100vh * 30 / 812);
 }
 
 .avatar-box {
   position: relative;
-  width: calc(100vw * 116 / 375);
-  height: calc(100vw * 116 / 375);
+  width: calc(100vw * 80 / 375);
+  height: calc(100vw * 80 / 375);
   border-radius: 50%;
   background-size: cover;
   background-position: center;
-  border: calc(100vw * 2 / 375) solid #fff;
+  border: calc(100vw * 1 / 375) solid #fff;
 }
 
 .avatar-switch {
   position: absolute;
-  right: calc(100vw * -2 / 375);
+  right: calc(100vw * -3 / 375);
   bottom: calc(100vw * -2 / 375);
-  width: calc(100vw * 34 / 375);
-  height: calc(100vw * 34 / 375);
+  width: calc(100vw * 28 / 375);
+  height: calc(100vw * 28 / 375);
   border-radius: 50%;
   background: linear-gradient(135deg, #8cecdf 0%, #c558ff 100%);
-  padding: calc(100vw * 3 / 375);
+  padding: calc(100vw * 2 / 375);
   box-sizing: border-box;
 }
 
@@ -249,18 +251,18 @@ onMounted(() => {
   height: 100%;
   border-radius: 50%;
   background: #fff;
-  padding: calc(100vw * 7 / 375);
+  padding: calc(100vw * 6 / 375);
   box-sizing: border-box;
 }
 
 .form-section {
-  margin-bottom: calc(100vh * 28 / 812);
+  margin-bottom: calc(100vh * 22 / 812);
 }
 
 .label {
-  margin-bottom: calc(100vh * 14 / 812);
+  margin-bottom: calc(100vh * 10 / 812);
   font-family: 'YesevaOne', sans-serif;
-  font-size: calc(100vw * 30 / 375);
+  font-size: calc(100vw * 20 / 375);
   font-style: italic;
   color: #000;
 }
@@ -269,11 +271,11 @@ onMounted(() => {
   position: relative;
   width: 100%;
   height: calc(100vh * 54 / 812);
-  border-radius: calc(100vw * 27 / 375);
+  border-radius: calc(100vw * 16 / 375);
   background: rgba(255, 255, 255, 0.98);
   display: flex;
   align-items: center;
-  padding: 0 calc(100vw * 18 / 375);
+  padding: 0 calc(100vw * 15 / 375);
   box-sizing: border-box;
 }
 
@@ -284,7 +286,7 @@ onMounted(() => {
   outline: none;
   background: transparent;
   font-family: 'Archivo', sans-serif;
-  font-size: calc(100vw * 16 / 375);
+  font-size: calc(100vw * 14 / 375);
   color: rgba(0, 0, 0, 0.72);
   appearance: none;
 }
@@ -294,7 +296,7 @@ onMounted(() => {
 }
 
 .select-box {
-  padding-right: calc(100vw * 46 / 375);
+  padding-right: calc(100vw * 42 / 375);
 }
 
 .date-input {
@@ -303,27 +305,27 @@ onMounted(() => {
 
 .select-arrow {
   position: absolute;
-  right: calc(100vw * 18 / 375);
+  right: calc(100vw * 16 / 375);
   top: 50%;
   transform: translateY(-35%);
   width: 0;
   height: 0;
-  border-left: calc(100vw * 8 / 375) solid transparent;
-  border-right: calc(100vw * 8 / 375) solid transparent;
-  border-top: calc(100vw * 14 / 375) solid #c558ff;
+  border-left: calc(100vw * 7 / 375) solid transparent;
+  border-right: calc(100vw * 7 / 375) solid transparent;
+  border-top: calc(100vw * 12 / 375) solid #c558ff;
   pointer-events: none;
 }
 
 .gender-list {
   display: flex;
   align-items: center;
-  gap: calc(100vw * 24 / 375);
-  padding-top: calc(100vh * 2 / 812);
+  gap: calc(100vw * 18 / 375);
+  padding-top: calc(100vh * 4 / 812);
 }
 
 .gender-item {
-  width: calc(100vw * 96 / 375);
-  height: calc(100vw * 96 / 375);
+  width: calc(100vw * 80 / 375);
+  height: calc(100vw * 80 / 375);
   border-radius: 50%;
   padding: calc(100vw * 4 / 375);
   box-sizing: border-box;
@@ -343,12 +345,12 @@ onMounted(() => {
 }
 
 .submit-wrap {
-  padding: calc(100vh * 34 / 812) calc(100vw * 24 / 375) calc(100vh * 12 / 812);
+  padding: calc(100vh * 24 / 812) calc(100vw * 24 / 375) calc(100vh * 12 / 812);
 }
 
 .submit-btn {
   width: 100%;
-  height: calc(100vh * 62 / 812);
+  height: calc(100vh * 54 / 812);
   border-radius: calc(100vw * 999 / 375);
   border: calc(100vw * 4 / 375) solid #fff;
   background: linear-gradient(90deg, #8cecdf 0%, #9dc6ff 30%, #c558ff 100%);
@@ -356,7 +358,7 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   font-family: 'YesevaOne', sans-serif;
-  font-size: calc(100vw * 26 / 375);
+  font-size: calc(100vw * 20 / 375);
   font-style: italic;
   color: #fff;
   box-sizing: border-box;
