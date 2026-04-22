@@ -195,7 +195,7 @@ function removeBlock(userId) {
   font-size: calc(100vw * 12 / 375);
   font-weight: 400;
   line-height: calc(100vw * 13.06 / 375);
-  color: rgba(105, 71, 65, 1);
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
