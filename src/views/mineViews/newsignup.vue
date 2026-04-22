@@ -74,7 +74,7 @@ import { useCurrentUserStore } from '@/stores/currentUser'
 import { useUIStore } from '@/stores/ui'
 import { useUserStore } from '@/stores/user'
 import BackButton from '@/components/back.vue'
-import { goBackOrClose } from '@/utils/iosBridge'
+import { goBackOrClose, sendNewSignupToIOS } from '@/utils/iosBridge'
 import { uploadSingleImage } from '@/utils/ossUpload'
 import avatarPlaceholder from '@/assets/avataricon.png'
 import signupGenderFemale from '@/assets/signup-gender-female.png'
@@ -193,6 +193,11 @@ function handleBirthdayChange() {
 }
 
 async function handleNext() {
+  if (!avatarFile.value && avatarPreview.value === avatarPlaceholder) {
+    uiStore.showToast('Please select avatar')
+    return
+  }
+
   if (!name.value.trim()) {
     uiStore.showToast('Please enter name')
     return
@@ -231,6 +236,10 @@ async function handleNext() {
     setTimeout(() => {
       userStore.updateUser(currentUserStore.currentUser.userId, payload)
       uiStore.hideLoading()
+      sendNewSignupToIOS({
+        name: name.value,
+        avator: avatarUrl
+      })
       uiStore.showToast('Profile updated')
       goBackOrClose()
     }, delay)

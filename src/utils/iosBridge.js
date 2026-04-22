@@ -128,6 +128,23 @@ export function sendLoginToIOS(isLogin) {
     }
 }
 
+// Notify iOS that new signup info is ready
+export function sendNewSignupToIOS(userInfo) {
+    try {
+        if (
+            window.webkit &&
+            window.webkit.messageHandlers &&
+            window.webkit.messageHandlers.newsignup
+        ) {
+            window.webkit.messageHandlers.newsignup.postMessage({ userInfo })
+        } else {
+            console.warn('iOS handler newsignup not found')
+        }
+    } catch (e) {
+        console.error('sendNewSignupToIOS error', e)
+    }
+}
+
 // Handle page back or close action
 export function goBackOrClose() {
     if (window.history.state.back) {
