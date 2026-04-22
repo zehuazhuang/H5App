@@ -96,7 +96,6 @@ const uiStore = useUIStore()
   box-sizing: border-box;
   overflow: hidden;
   border: calc(100vw * 8 / 375) solid rgba(177, 222, 255, 0.95);
-  transform: rotate(-4deg);
   padding: calc(100vh * 72 / 812) calc(100vw * 26 / 375) calc(100vh * 52 / 812);
   display: flex;
   flex-direction: column;
