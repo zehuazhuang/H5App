@@ -109,9 +109,7 @@ function handleAction(isDelete) {
   font-family: 'YesevaOne', sans-serif;
   font-size: calc(100vw * 20 / 375);
   font-weight: 400;
-  background: linear-gradient(135deg, rgba(255, 159, 142, 1) 0%, rgba(241, 213, 160, 1) 32.13%, rgba(201, 255, 221, 1) 67.84%, rgba(157, 255, 255, 1) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #000; 
 }
 
 /* Options List */
@@ -125,19 +123,43 @@ function handleAction(isDelete) {
 }
 
 .option {
+  position: relative;
   height: calc(100vh * 52 / 812);
-  background: rgba(255, 255, 255, 0.2);
   border-radius: calc(100vw * 20 / 375);
-  box-shadow: 0 calc(100vw * 2 / 375) calc(100vw * 4 / 375) rgba(0, 0, 0, 0.06);
+  background: #fff; /* 白底 */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 calc(100vw * 10 / 375);
+  z-index: 1;
+}
+
+.option::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: calc(100vw * 20 / 375);
+  padding: 1.5px; /* 边框粗细 */
+
+  background: linear-gradient(
+    162deg,
+    rgba(151, 229, 246, 1),
+    rgba(190, 92, 255, 1),
+    rgba(195, 99, 255, 1),
+  );
+
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  z-index: -1;
 }
 
 .option-text {
   font-family: 'Archivo', sans-serif;
-  color: #fff;
+  color: #000;
   font-size: calc(100vw * 14 / 375);
   font-weight: 400;
 }
