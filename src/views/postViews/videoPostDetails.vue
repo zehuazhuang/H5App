@@ -151,6 +151,10 @@ const showPostReport = ref(false)
 function postReportSelect(value) {
   showPostReport.value = false
   if (value === 0) {
+    if (requireLoginForAction(currentUserStore, uiStore, {
+      message: 'Guests need to log in before reporting.'
+    })) return
+
     router.push({ name: 'report' })
   } else if (value === 1) {
     //用户选择屏蔽
@@ -247,6 +251,10 @@ const showCommentReport = ref(false)
 const commentAction = ref(null) // 保存 0 或 1
 
 function commentReportSelect(value) {
+  if (value === 0 && requireLoginForAction(currentUserStore, uiStore, {
+    message: 'Guests need to log in before reporting.'
+  })) return
+
   commentAction.value = value  // 保存选择
   showCommentReport.value = false
 }

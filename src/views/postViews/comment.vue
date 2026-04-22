@@ -123,6 +123,10 @@ watch(
     if (newVal === null) return
 
     if (newVal === 0) {
+      if (requireLoginForAction(currentUserStore, uiStore, {
+        message: 'Guests need to log in before reporting.'
+      })) return
+
       router.push({ name: 'report' })
     } else if (newVal === 1) {
       if (uiStore.loading) return

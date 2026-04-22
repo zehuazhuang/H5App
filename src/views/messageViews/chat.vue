@@ -70,6 +70,7 @@ import BackButton from '@/components/back.vue'
 import MoreButton from '@/components/more.vue'
 import VideoCall from '@/views/messageViews/videocall.vue'
 import ReportDialog from '@/components/reportChoose.vue'
+import { requireLoginForAction } from '@/utils/guestAuth'
 import { goBackOrClose } from '@/utils/iosBridge'
 import { uploadSingleImage } from '@/utils/ossUpload'
 
@@ -200,6 +201,10 @@ const showReport = ref(false)
 function reportSelect(value) {
   showReport.value = false
   if (value === 0) {
+    if (requireLoginForAction(currentUserStore, uiStore, {
+      message: 'Guests need to log in before reporting.'
+    })) return
+
     router.push({ name: 'report' })
   } else if (value === 1) {
     //用户选择屏蔽

@@ -153,6 +153,10 @@ const showPostReport = ref(false)
 function postReportSelect(value) {
   showPostReport.value = false
   if (value === 0) {
+    if (requireLoginForAction(currentUserStore, uiStore, {
+      message: 'Guests need to log in before reporting.'
+    })) return
+
     router.push({ name: 'report' })
   } else if (value === 1) {
     //用户选择屏蔽
@@ -231,6 +235,10 @@ function commentReportSelect(value) {
   if (!userIdToBlock) return
 
   if (value === 0) {
+    if (requireLoginForAction(currentUserStore, uiStore, {
+      message: 'Guests need to log in before reporting.'
+    })) return
+
     router.push({ name: 'report' })
   } else if (value === 1) {
     // 拉黑逻辑
