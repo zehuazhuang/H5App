@@ -47,6 +47,7 @@ import { useCurrentUserStore } from '@/stores/currentUser'
 import BackButton from '@/components/back.vue'
 import { uploadSingleImage, uploadVideo } from '@/utils/ossUpload'
 import { goBackOrClose } from '@/utils/iosBridge'
+import { requireLoginForAction } from '@/utils/guestAuth'
 
 const text = ref('')
 const selectedTheme = ref(0)
@@ -82,6 +83,10 @@ const handleRemoveVideo = () => {
 }
 
 const handleRelease = async () => {
+  if (requireLoginForAction(currentUserStore, uiStore, {
+    message: 'Guests need to log in before publishing posts.'
+  })) return
+
   // 1. 判断文案是否为空
   if (!text.value.trim()) {
     uiStore.showToast('Please fill in the post text.')

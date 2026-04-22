@@ -111,6 +111,23 @@ export function sendLogoutToIOS(isLogout) {
     }
 }
 
+// Notify iOS to open login flow
+export function sendLoginToIOS(isLogin) {
+    try {
+        if (
+            window.webkit &&
+            window.webkit.messageHandlers &&
+            window.webkit.messageHandlers.login
+        ) {
+            window.webkit.messageHandlers.login.postMessage({ isLogin: isLogin })
+        } else {
+            console.warn('iOS handler login not found')
+        }
+    } catch (e) {
+        console.error('sendLoginToIOS error', e)
+    }
+}
+
 // Handle page back or close action
 export function goBackOrClose() {
     if (window.history.state.back) {

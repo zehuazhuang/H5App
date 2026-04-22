@@ -115,6 +115,7 @@ import commentSendImage from '@/assets/commentsend.png'
 import ReportDialog from '@/components/reportChoose.vue'
 import Empty from '@/components/empty.vue'
 import { goBackOrClose } from '@/utils/iosBridge'
+import { requireLoginForAction } from '@/utils/guestAuth'
 
 const { postId } = defineProps({
   postId: {
@@ -193,6 +194,10 @@ function goOtherHome(userId) {
 
 // 点赞逻辑
 function toggleLike() {
+  if (requireLoginForAction(currentUserStore, uiStore, {
+    message: 'Guests need to log in before liking posts.'
+  })) return
+
   const postLikeIds = currentUserStore.currentUser.postLikeIds
   // 判断当前用户是否已经点赞
   const likedIndex = postLikeIds.indexOf(postId)
@@ -252,6 +257,10 @@ function commentReportSelect(value) {
 
 // 发送评论逻辑
 function sendComment() {
+  if (requireLoginForAction(currentUserStore, uiStore, {
+    message: 'Guests need to log in before commenting.'
+  })) return
+
   const content = commentInput.value.trim()
   if (!content) return // 输入为空直接返回
 

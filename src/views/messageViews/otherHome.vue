@@ -105,6 +105,7 @@ import MoreButton from '@/components/more.vue'
 import ReportDialog from '@/components/reportChoose.vue'
 import Empty from '@/components/empty.vue'
 import { goBackOrClose } from '@/utils/iosBridge'
+import { requireLoginForAction } from '@/utils/guestAuth'
 
 const { userId } = defineProps({
   userId: {
@@ -161,6 +162,10 @@ function reportSelect(value) {
 
 // Handle follow action
 function handleFollow() {
+  if (requireLoginForAction(currentUserStore, uiStore, {
+    message: 'Guests need to log in before following users.'
+  })) return
+
   const currentUserId = currentUserStore.currentUser.userId
 
   // Update current user's follow list

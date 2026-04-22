@@ -43,8 +43,8 @@ import { useUserStore } from '@/stores/user'
 import { useCurrentUserStore } from '@/stores/currentUser'
 import { useUIStore } from '@/stores/ui'
 import { usePostStore } from '@/stores/post'
-import ReportDialog from '@/components/reportChoose.vue'
 import Empty from '@/components/empty.vue'
+import { requireLoginForAction } from '@/utils/guestAuth'
 
 const props = defineProps({
   postId: {
@@ -77,6 +77,10 @@ function goOtherHome(userId) {
 const inputText = ref('')
 
 function sendComment() {
+  if (requireLoginForAction(currentUserStore, uiStore, {
+    message: 'Guests need to log in before commenting.'
+  })) return
+
   const content = inputText.value.trim()
   if (!content) return // 输入为空直接返回
 

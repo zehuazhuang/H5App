@@ -34,6 +34,7 @@ import { useUserStore } from '@/stores/user'
 import { useUIStore } from '@/stores/ui'
 import BackButton from '@/components/back.vue'
 import Empty from '@/components/empty.vue'
+import { requireLoginForAction } from '@/utils/guestAuth'
 
 const currentUserStore = useCurrentUserStore()
 const userStore = useUserStore()
@@ -48,6 +49,10 @@ const follows = computed(() => {
 })
 
 function cancelFollow(userId) {
+  if (requireLoginForAction(currentUserStore, uiStore, {
+    message: 'Guests need to log in before managing follows.'
+  })) return
+
   if (uiStore.loading) return
   uiStore.showLoading()
   const currentUserId = currentUserStore.currentUser.userId

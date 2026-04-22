@@ -93,6 +93,7 @@ import MoreButton from '@/components/more.vue'
 import Comment from '@/views/postViews/comment.vue'
 import ReportDialog from '@/components/reportChoose.vue'
 import { goBackOrClose } from '@/utils/iosBridge'
+import { requireLoginForAction } from '@/utils/guestAuth'
 
 const { postId } = defineProps({
   postId: {
@@ -185,6 +186,10 @@ function postReportSelect(value) {
 
 // Handle follow action
 function handleFollow() {
+  if (requireLoginForAction(currentUserStore, uiStore, {
+    message: 'Guests need to log in before following users.'
+  })) return
+
   const currentUserId = currentUserStore.currentUser.userId
   const postUserId = post.userId
 
@@ -216,6 +221,10 @@ function goOtherHome(userId) {
 
 // 点赞逻辑
 function toggleLike() {
+  if (requireLoginForAction(currentUserStore, uiStore, {
+    message: 'Guests need to log in before liking posts.'
+  })) return
+
   const postLikeIds = currentUserStore.currentUser.postLikeIds
   // 判断当前用户是否已经点赞
   const likedIndex = postLikeIds.indexOf(postId)

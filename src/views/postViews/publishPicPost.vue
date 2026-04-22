@@ -62,6 +62,7 @@ import { useCurrentUserStore } from '@/stores/currentUser'
 import BackButton from '@/components/back.vue'
 import { uploadMultipleImages } from '@/utils/ossUpload.js'
 import { goBackOrClose } from '@/utils/iosBridge'
+import { requireLoginForAction } from '@/utils/guestAuth'
 
 const text = ref('')
 const selectedTheme = ref(0)
@@ -89,6 +90,10 @@ const uiStore = useUIStore()
 const postStore = usePostStore()
 const currentUserStore = useCurrentUserStore()
 const handleRelease = async () => {
+  if (requireLoginForAction(currentUserStore, uiStore, {
+    message: 'Guests need to log in before publishing posts.'
+  })) return
+
   if (!text.value.trim()) {
     uiStore.showToast('Please fill in the post text.')
     return
